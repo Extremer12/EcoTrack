@@ -7,6 +7,7 @@ import RecycleForm from './RecycleForm';
 import ApprovalPanel from './ApprovalPanel';
 import Rankings from './Rankings';
 import History from './History';
+import StudentProfile from './StudentProfile';
 
 const AppContent = () => {
   const { 
@@ -34,7 +35,7 @@ const AppContent = () => {
                 <Icons.Recycle />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">EcoScore App</h1>
+                <h1 className="text-xl font-bold text-gray-900">EcoTrack</h1>
                 <p className="text-sm text-gray-500">Sistema de Reciclaje Escolar</p>
               </div>
             </div>
@@ -67,6 +68,7 @@ const AppContent = () => {
               {activeTab === 'approve' && 'Aprobar Puntos'}
               {activeTab === 'rankings' && 'Rankings'}
               {activeTab === 'history' && 'Historial'}
+              {activeTab === 'profile' && 'Mi Perfil'}
             </span>
           </div>
         </div>
@@ -151,6 +153,22 @@ const AppContent = () => {
               <span>Historial</span>
               {activeTab === 'history' && <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>}
             </button>
+            
+            {user.role === 'student' && (
+              <button
+                onClick={() => setActiveTab('profile')}
+                title="Ver mi perfil y estadísticas personales"
+                className={`flex items-center space-x-2 px-4 py-3 rounded-lg font-medium transition-all transform hover:scale-105 ${
+                  activeTab === 'profile'
+                    ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-green-50'
+                }`}
+              >
+                <Icons.User />
+                <span>Mi Perfil</span>
+                {activeTab === 'profile' && <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>}
+              </button>
+            )}
           </div>
         </nav>
 
@@ -167,6 +185,7 @@ const AppContent = () => {
                 {activeTab === 'approve' && '✅ Aprobación de Puntos'}
                 {activeTab === 'rankings' && '🏆 Rankings y Competencias'}
                 {activeTab === 'history' && '📋 Historial de Actividades'}
+                {activeTab === 'profile' && '👤 Mi Perfil Personal'}
               </h4>
               <p className="text-sm text-blue-800">
                 {activeTab === 'dashboard' && 'Aquí puedes ver un resumen de todas las actividades de reciclaje, puntos totales y estadísticas generales.'}
@@ -174,6 +193,7 @@ const AppContent = () => {
                 {activeTab === 'approve' && 'Como validador principal, puedes aprobar los puntos pendientes de cada curso para que se conviertan en puntos confirmados.'}
                 {activeTab === 'rankings' && 'Consulta las clasificaciones de estudiantes y cursos basadas en los puntos de reciclaje confirmados.'}
                 {activeTab === 'history' && 'Revisa el historial completo de todas las actividades de reciclaje con filtros por estado, estudiante y fecha.'}
+                {activeTab === 'profile' && 'Consulta tu información personal, puntos totales, historial de reciclaje, logros obtenidos y progreso hacia el siguiente nivel.'}
               </p>
             </div>
           </div>
@@ -185,6 +205,7 @@ const AppContent = () => {
         {activeTab === 'approve' && <ApprovalPanel />}
         {activeTab === 'rankings' && <Rankings />}
         {activeTab === 'history' && <History />}
+        {activeTab === 'profile' && <StudentProfile />}
       </div>
     </div>
   );

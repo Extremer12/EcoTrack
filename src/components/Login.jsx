@@ -22,7 +22,7 @@ const Login = () => {
               <Icons.Recycle />
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">EcoScore App</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">EcoTrack</h1>
           <p className="text-gray-600">Sistema de Reciclaje Escolar</p>
         </div>
 

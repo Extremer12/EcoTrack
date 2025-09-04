@@ -58,7 +58,7 @@ const Dashboard = () => {
       <div className="bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 rounded-3xl p-8 text-white shadow-xl">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold mb-2">¡Bienvenido a EcoScore! 🌱</h1>
+            <h1 className="text-3xl font-bold mb-2">¡Bienvenido a EcoTrack! 🌱</h1>
             <p className="text-emerald-100 text-lg">
               Juntos estamos construyendo un futuro más verde, un reciclaje a la vez.
             </p>

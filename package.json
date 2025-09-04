@@ -1,7 +1,7 @@
 {
   "name": "ecotrack-app",
   "version": "1.0.0",
-  "description": "Sistema de Reciclaje Escolar - EcoScore App",
+  "description": "Sistema de Reciclaje Escolar - EcoTrack",
   "homepage": "https://extremer12.github.io/EcoTrack",
   "main": "index.js",
   "scripts": {

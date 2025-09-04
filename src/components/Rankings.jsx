@@ -52,7 +52,7 @@ const Rankings = () => {
       <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-3xl p-8 text-white shadow-xl">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Rankings EcoScore 🏆</h2>
+            <h2 className="text-3xl font-bold mb-2">Rankings EcoTrack 🏆</h2>
             <p className="text-purple-100 text-lg">
               ¡Descubre quiénes son los campeones del reciclaje!
             </p>

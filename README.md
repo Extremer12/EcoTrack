@@ -11,8 +11,11 @@ EcoTrack es una aplicación web desarrollada en React que permite gestionar y ra
 - 🏆 **Sistema de puntos y rankings** individual y por cursos
 - 📋 **Panel de aprobación** para validar registros
 - 📈 **Historial de actividades** con filtros
-- 🔔 **Sistema de notificaciones** en tiempo real
+- 👤 **Perfil personal de estudiantes** con estadísticas y logros
+- 🎯 **Sistema de logros** con niveles desbloqueables
+- 🔔 **Sistema de notificaciones** mejorado y legible
 - 🎨 **Interfaz moderna** con animaciones y diseño responsive
+- 👥 **Sistema multi-rol** (estudiantes, profesores, administradores)
 
 ## Tecnologías Utilizadas
 
@@ -32,6 +35,7 @@ EcoTrack/
 │   ├── ApprovalPanel.jsx # Panel de aprobación
 │   ├── Rankings.jsx     # Sistema de rankings
 │   ├── History.jsx      # Historial de actividades
+│   ├── StudentProfile.jsx # Perfil personal de estudiantes
 │   ├── Login.jsx        # Componente de login
 │   └── Icons.jsx        # Iconos SVG
 ├── contexts/            # Contextos de React
@@ -76,6 +80,13 @@ npm start
 3. Selecciona el tipo de material y tamaño del pack
 4. Visualiza tus estadísticas en el dashboard
 5. Consulta tu posición en los rankings
+6. Accede a tu perfil personal para ver logros y progreso
+7. Revisa tu historial personal de reciclaje
+
+### Para Profesores/Validadores
+1. Registra materiales reciclados de los estudiantes
+2. Selecciona el estudiante y tipo de material
+3. Asigna puntos según el tamaño del pack
 
 ### Para Administradores
 1. Accede al panel de aprobación
