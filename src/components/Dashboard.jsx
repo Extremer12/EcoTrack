@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Icons } from './Icons';
+import { useEcoTrack } from '../contexts/EcoTrackContext';
 
 // Stat Card Component
 const StatCard = ({ title, value, icon, gradient }) => {
@@ -19,7 +20,32 @@ const StatCard = ({ title, value, icon, gradient }) => {
 };
 
 // Dashboard Component
-const Dashboard = ({ data, user }) => {
+const Dashboard = () => {
+  const { data, isLoading } = useEcoTrack();
+  
+  console.log('Dashboard: isLoading =', isLoading);
+  console.log('Dashboard: data =', data);
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="p-6 text-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto mb-4"></div>
+        <p className="text-gray-600">Cargando datos...</p>
+      </div>
+    );
+  }
+  
+  // Safety check for data after loading
+  if (!data || !data.courses || !data.students || !data.recyclingHistory) {
+    return (
+      <div className="p-6 text-center">
+        <div className="text-red-600 mb-4">⚠️</div>
+        <p className="text-gray-600">Error: No se pudieron cargar los datos</p>
+      </div>
+    );
+  }
+
   // Calculate totals
   const totalConfirmed = data.courses.reduce((sum, course) => sum + course.pointsConfirmed, 0);
   const totalPending = data.courses.reduce((sum, course) => sum + course.pointsPending, 0);

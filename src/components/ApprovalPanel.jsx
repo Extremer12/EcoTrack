@@ -1,8 +1,31 @@
 import React from 'react';
 import { Icons } from './Icons';
+import { useEcoTrack } from '../contexts/EcoTrackContext';
 
 // Approval Panel Component
-const ApprovalPanel = ({ onApprove, data }) => {
+const ApprovalPanel = () => {
+  const { data, approveCourse, isLoading } = useEcoTrack();
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="p-6 text-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto mb-4"></div>
+        <p className="text-gray-600">Cargando datos...</p>
+      </div>
+    );
+  }
+  
+  // Safety check for data after loading
+  if (!data || !data.courses || !data.students || !data.recyclingHistory) {
+    return (
+      <div className="p-6 text-center">
+        <div className="text-red-600 mb-4">⚠️</div>
+        <p className="text-gray-600">Error: No se pudieron cargar los datos</p>
+      </div>
+    );
+  }
+
   // Get pending recycling details by course
   const getPendingRecyclingByCourse = (courseName) => {
     return data.recyclingHistory.filter(item => 
@@ -74,7 +97,7 @@ const ApprovalPanel = ({ onApprove, data }) => {
                 
                 {course.pointsPending > 0 ? (
                   <button
-                    onClick={() => onApprove(course.id)}
+                    onClick={() => approveCourse(course.id)}
                     className="w-full bg-gradient-to-r from-emerald-500 to-green-600 text-white py-4 px-6 rounded-xl font-bold text-lg hover:from-emerald-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center space-x-3 shadow-lg"
                   >
                     <Icons.Check className="w-6 h-6" />

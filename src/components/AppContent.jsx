@@ -181,8 +181,8 @@ const AppContent = () => {
 
         {/* Content */}
         {activeTab === 'dashboard' && <Dashboard />}
-        {activeTab === 'recycle' && <RecycleForm onRegister={registerRecycling} />}
-        {activeTab === 'approve' && <ApprovalPanel onApprove={approveCourse} />}
+        {activeTab === 'recycle' && <RecycleForm />}
+        {activeTab === 'approve' && <ApprovalPanel />}
         {activeTab === 'rankings' && <Rankings />}
         {activeTab === 'history' && <History />}
       </div>

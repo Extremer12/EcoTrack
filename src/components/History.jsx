@@ -1,10 +1,30 @@
-import React, { useContext, useState } from 'react';
-import { EcoTrackContext } from '../contexts/EcoTrackContext';
+import React, { useState } from 'react';
+import { useEcoTrack } from '../contexts/EcoTrackContext';
 import { Icons } from './Icons';
 
 const History = () => {
-  const { data, user } = useContext(EcoTrackContext);
+  const { data, user, isLoading } = useEcoTrack();
   const [filter, setFilter] = useState('all');
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="p-6 text-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto mb-4"></div>
+        <p className="text-gray-600">Cargando historial...</p>
+      </div>
+    );
+  }
+  
+  // Safety check for data after loading
+  if (!data || !data.recyclingHistory) {
+    return (
+      <div className="p-6 text-center">
+        <div className="text-red-600 mb-4">⚠️</div>
+        <p className="text-gray-600">Error: No se pudieron cargar los datos del historial</p>
+      </div>
+    );
+  }
 
   const filteredHistory = data.recyclingHistory.filter(entry => {
     if (filter === 'all') return true;

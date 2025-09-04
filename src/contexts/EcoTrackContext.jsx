@@ -5,10 +5,32 @@ import { useNotification } from './NotificationContext';
 const EcoTrackContext = createContext();
 
 const EcoTrackProvider = ({ children }) => {
-  const [data, setData] = useState(generateMockData());
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState(() => {
+    console.log('EcoTrackContext: Initializing data with generateMockData');
+    const mockData = generateMockData();
+    console.log('EcoTrackContext: Initial data generated:', mockData);
+    setIsLoading(false);
+    return mockData;
+  });
   const [user, setUser] = useState(null);
   const [activeTab, setActiveTab] = useState('dashboard');
-  const { addNotification } = useNotification();
+
+  // Set loading to false after data initialization
+  useEffect(() => {
+    console.log('EcoTrackContext: Setting isLoading to false');
+    setIsLoading(false);
+  }, []);
+  
+  // Get notification hook safely
+  let addNotification;
+  try {
+    const notificationContext = useNotification();
+    addNotification = notificationContext.addNotification;
+  } catch (error) {
+    console.warn('Notification context not available');
+    addNotification = (message) => console.log('Notification:', message);
+  }
 
   // Simulate login
   useEffect(() => {
@@ -48,10 +70,26 @@ const EcoTrackProvider = ({ children }) => {
       return;
     }
 
+    if (!data || !data.students || !data.materials || !data.courses) {
+      addNotification('❌ Error: Datos no disponibles', 'error');
+      return;
+    }
+
     const student = data.students.find(s => s.id.toString() === selectedStudent);
     const material = data.materials.find(m => m.id.toString() === selectedMaterial);
+    
+    if (!student || !material) {
+      addNotification('❌ Error: Estudiante o material no encontrado', 'error');
+      return;
+    }
+    
     const sizeData = material.sizes.find(s => s.size === selectedSize);
     const course = data.courses.find(c => c.name === student.course);
+    
+    if (!sizeData || !course) {
+      addNotification('❌ Error: Tamaño o curso no encontrado', 'error');
+      return;
+    }
 
     // Update data (in real app, this would be an API call)
     const newData = { ...data };
@@ -82,8 +120,18 @@ const EcoTrackProvider = ({ children }) => {
   };
 
   const approveCourse = (courseId) => {
+    if (!data || !data.courses || !data.students || !data.recyclingHistory) {
+      addNotification('❌ Error: Datos no disponibles', 'error');
+      return;
+    }
+
     const newData = { ...data };
     const course = newData.courses.find(c => c.id === courseId);
+    
+    if (!course) {
+      addNotification('❌ Error: Curso no encontrado', 'error');
+      return;
+    }
     const pointsToApprove = course.pointsPending;
     
     if (pointsToApprove === 0) {
@@ -121,6 +169,7 @@ const EcoTrackProvider = ({ children }) => {
 
   const value = {
     data,
+    isLoading,
     user,
     activeTab,
     setData,

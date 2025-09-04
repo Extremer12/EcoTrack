@@ -1,11 +1,33 @@
 import React, { useState } from 'react';
 import { Icons } from './Icons';
+import { useEcoTrack } from '../contexts/EcoTrackContext';
 
 // Recycle Form Component
-const RecycleForm = ({ onRegister, data, user }) => {
+const RecycleForm = () => {
+  const { data, user, isLoading, registerRecycling } = useEcoTrack();
   const [selectedStudent, setSelectedStudent] = useState('');
   const [selectedMaterial, setSelectedMaterial] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="p-6 text-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto mb-4"></div>
+        <p className="text-gray-600">Cargando formulario...</p>
+      </div>
+    );
+  }
+  
+  // Safety check for data after loading
+  if (!data || !data.students || !data.materials) {
+    return (
+      <div className="p-6 text-center">
+        <div className="text-red-600 mb-4">⚠️</div>
+        <p className="text-gray-600">Error: No se pudieron cargar los datos del formulario</p>
+      </div>
+    );
+  }
 
   const filteredStudents = data.students.filter(student => 
     student.course === user.course
@@ -15,7 +37,7 @@ const RecycleForm = ({ onRegister, data, user }) => {
   const selectedSizeData = selectedMaterialData?.sizes.find(s => s.size === selectedSize);
 
   const handleRegister = () => {
-    onRegister(selectedStudent, selectedMaterial, selectedSize);
+    registerRecycling(selectedStudent, selectedMaterial, selectedSize);
     // Clear form after successful registration
     setSelectedStudent('');
     setSelectedMaterial('');

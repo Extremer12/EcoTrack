@@ -1,9 +1,29 @@
-import React, { useContext } from 'react';
-import { EcoTrackContext } from '../contexts/EcoTrackContext';
+import React from 'react';
+import { useEcoTrack } from '../contexts/EcoTrackContext';
 import { Icons } from './Icons';
 
 const Rankings = () => {
-  const { data } = useContext(EcoTrackContext);
+  const { data, isLoading } = useEcoTrack();
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="p-6 text-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto mb-4"></div>
+        <p className="text-gray-600">Cargando rankings...</p>
+      </div>
+    );
+  }
+  
+  // Safety check for data after loading
+  if (!data || !data.students) {
+    return (
+      <div className="p-6 text-center">
+        <div className="text-red-600 mb-4">⚠️</div>
+        <p className="text-gray-600">Error: No se pudieron cargar los datos de rankings</p>
+      </div>
+    );
+  }
 
   const getRankIcon = (index) => {
     if (index === 0) return '🥇';
