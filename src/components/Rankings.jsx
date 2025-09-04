@@ -1,16 +1,18 @@
 import React from 'react';
 import { useEcoTrack } from '../contexts/EcoTrackContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import { Icons } from './Icons';
 
 const Rankings = () => {
   const { data, isLoading } = useEcoTrack();
+  const { t } = useLanguage();
 
   // Show loading state
   if (isLoading) {
     return (
       <div className="p-6 text-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto mb-4"></div>
-        <p className="text-gray-600">Cargando rankings...</p>
+        <p className="text-gray-600">{t('loadingRankings')}</p>
       </div>
     );
   }
@@ -20,7 +22,7 @@ const Rankings = () => {
     return (
       <div className="p-6 text-center">
         <div className="text-red-600 mb-4">⚠️</div>
-        <p className="text-gray-600">Error: No se pudieron cargar los datos de rankings</p>
+        <p className="text-gray-600">{t('errorLoadingRankings')}</p>
       </div>
     );
   }
@@ -52,9 +54,9 @@ const Rankings = () => {
       <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-3xl p-8 text-white shadow-xl">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Rankings EcoTrack 🏆</h2>
+            <h2 className="text-3xl font-bold mb-2">{t('rankingsTitle')}</h2>
             <p className="text-purple-100 text-lg">
-              ¡Descubre quiénes son los campeones del reciclaje!
+              {t('discoverChampions')}
             </p>
           </div>
           <div className="hidden md:block">
@@ -70,7 +72,7 @@ const Rankings = () => {
             <div className="bg-gradient-to-r from-emerald-500 to-green-500 p-3 rounded-xl mr-4">
               <Icons.Trophy className="text-white" />
             </div>
-            Ranking Individual 👤
+            {t('individualRanking')}
           </h3>
           <div className="space-y-4">
             {[...data.students]
@@ -87,9 +89,9 @@ const Rankings = () => {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="font-bold text-emerald-600 text-xl">{student.points} pts</div>
+                  <div className="font-bold text-emerald-600 text-xl">{student.points} {t('pts')}</div>
                   {student.pending > 0 && (
-                    <div className="text-sm text-orange-600 font-semibold">+{student.pending} pendientes</div>
+                    <div className="text-sm text-orange-600 font-semibold">+{student.pending} {t('pendingPoints')}</div>
                   )}
                 </div>
               </div>
@@ -103,7 +105,7 @@ const Rankings = () => {
             <div className="bg-gradient-to-r from-blue-500 to-indigo-500 p-3 rounded-xl mr-4">
               <Icons.Trophy className="text-white" />
             </div>
-            Ranking por Curso 🏫
+            {t('courseRanking')}
           </h3>
           <div className="space-y-4">
             {[...data.courses]
@@ -114,12 +116,12 @@ const Rankings = () => {
                   <div className={`w-12 h-12 flex items-center justify-center rounded-full text-lg font-bold transition-all duration-300 ${getRankStyle(index)}`}>
                     {getRankIcon(index)}
                   </div>
-                  <span className="font-bold text-gray-900 text-lg">Curso {course.name}</span>
+                  <span className="font-bold text-gray-900 text-lg">{t('course')} {course.name}</span>
                 </div>
                 <div className="text-right">
-                  <div className="font-bold text-emerald-600 text-xl">{course.pointsConfirmed} pts</div>
+                  <div className="font-bold text-emerald-600 text-xl">{course.pointsConfirmed} {t('pts')}</div>
                   {course.pointsPending > 0 && (
-                    <div className="text-sm text-orange-600 font-semibold">+{course.pointsPending} pendientes</div>
+                    <div className="text-sm text-orange-600 font-semibold">+{course.pointsPending} {t('pendingPoints')}</div>
                   )}
                 </div>
               </div>

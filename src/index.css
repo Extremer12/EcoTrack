@@ -50,3 +50,373 @@ code {
 ::-webkit-scrollbar-thumb:hover {
   background: #059669;
 }
+
+/* Dark Theme Styles */
+body.dark-theme {
+  background-color: #1a1a1a !important;
+  color: #e0e0e0 !important;
+}
+
+.dark-theme #root {
+  background-color: #1a1a1a !important;
+}
+
+.dark-theme .max-w-7xl,
+.dark-theme .max-w-4xl {
+  background-color: #1a1a1a !important;
+}
+
+.dark-theme ::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+.dark-theme ::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+}
+
+.dark-theme ::-webkit-scrollbar-thumb:hover {
+  background: #5a5a5a;
+}
+
+/* Dark theme for common elements */
+.dark-theme .bg-white {
+  background-color: #2d2d2d !important;
+}
+
+.dark-theme .text-gray-800 {
+  color: #f0f0f0 !important;
+}
+
+.dark-theme .text-gray-600 {
+  color: #c0c0c0 !important;
+}
+
+.dark-theme .text-gray-500 {
+  color: #a0a0a0 !important;
+}
+
+.dark-theme .text-gray-400 {
+  color: #909090 !important;
+}
+
+.dark-theme .text-gray-700 {
+  color: #d0d0d0 !important;
+}
+
+.dark-theme .text-gray-900 {
+  color: #f0f0f0 !important;
+}
+
+.dark-theme .border-gray-200 {
+  border-color: #404040 !important;
+}
+
+.dark-theme .border-gray-300 {
+  border-color: #505050 !important;
+}
+
+.dark-theme .text-blue-800 {
+  color: #93c5fd !important;
+}
+
+.dark-theme .text-blue-900 {
+  color: #dbeafe !important;
+}
+
+.dark-theme .text-emerald-600 {
+  color: #34d399 !important;
+}
+
+.dark-theme .text-orange-600 {
+  color: #fb923c !important;
+}
+
+.dark-theme .text-yellow-800 {
+  color: #fbbf24 !important;
+}
+
+.dark-theme .text-yellow-900 {
+  color: #f59e0b !important;
+}
+
+.dark-theme .bg-green-100 {
+  background-color: #1a3a1a !important;
+}
+
+.dark-theme .bg-yellow-100 {
+  background-color: #3a3a1a !important;
+}
+
+.dark-theme .text-green-800 {
+  color: #4ade80 !important;
+}
+
+.dark-theme .bg-gray-50 {
+  background-color: #2a2a2a !important;
+}
+
+.dark-theme .bg-gray-100 {
+  background-color: #333333 !important;
+}
+
+.dark-theme .from-blue-50 {
+  --tw-gradient-from: #1e293b !important;
+}
+
+.dark-theme .to-indigo-50 {
+  --tw-gradient-to: #1e1b4b !important;
+}
+
+.dark-theme .from-gray-50 {
+  --tw-gradient-from: #2a2a2a !important;
+}
+
+.dark-theme .to-green-50 {
+  --tw-gradient-to: #1a3a1a !important;
+}
+
+.dark-theme .to-blue-50 {
+  --tw-gradient-to: #1a2a3a !important;
+}
+
+.dark-theme .from-green-50 {
+  --tw-gradient-from: #1a3a1a !important;
+}
+
+.dark-theme .to-emerald-50 {
+  --tw-gradient-to: #1a3a2a !important;
+}
+
+.dark-theme .hover\:from-green-50:hover {
+  --tw-gradient-from: #1a3a1a !important;
+}
+
+.dark-theme .hover\:to-emerald-50:hover {
+  --tw-gradient-to: #1a3a2a !important;
+}
+
+.dark-theme .hover\:from-blue-50:hover {
+  --tw-gradient-from: #1a2a3a !important;
+}
+
+.dark-theme .hover\:to-indigo-50:hover {
+  --tw-gradient-to: #1e1b4b !important;
+}
+
+.dark-theme .from-yellow-50 {
+  --tw-gradient-from: #3a3a1a !important;
+}
+
+.dark-theme .to-amber-50 {
+  --tw-gradient-to: #3a2a1a !important;
+}
+
+.dark-theme .border-yellow-300 {
+  border-color: #ca8a04 !important;
+}
+
+.dark-theme .bg-gradient-to-r {
+  background: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to)) !important;
+}
+
+.dark-theme .from-emerald-500 {
+  --tw-gradient-from: #10b981 !important;
+}
+
+.dark-theme .via-green-500 {
+  --tw-gradient-stops: var(--tw-gradient-from), #10b981, var(--tw-gradient-to) !important;
+}
+
+.dark-theme .to-teal-500 {
+  --tw-gradient-to: #14b8a6 !important;
+}
+
+.dark-theme .from-blue-500 {
+  --tw-gradient-from: #3b82f6 !important;
+}
+
+.dark-theme .to-blue-600 {
+  --tw-gradient-to: #2563eb !important;
+}
+
+.dark-theme .from-yellow-500 {
+  --tw-gradient-from: #eab308 !important;
+}
+
+.dark-theme .to-orange-500 {
+  --tw-gradient-to: #f97316 !important;
+}
+
+.dark-theme .from-amber-500 {
+  --tw-gradient-from: #f59e0b !important;
+}
+
+.dark-theme .to-amber-600 {
+  --tw-gradient-to: #d97706 !important;
+}
+
+/* Dark theme gradients for Rankings component */
+.dark-theme .from-yellow-50 {
+  --tw-gradient-from: #422006 !important;
+}
+
+.dark-theme .to-amber-50 {
+  --tw-gradient-to: #451a03 !important;
+}
+
+.dark-theme .to-slate-50 {
+  --tw-gradient-to: #1e293b !important;
+}
+
+.dark-theme .from-amber-50 {
+  --tw-gradient-from: #451a03 !important;
+}
+
+.dark-theme .to-orange-50 {
+  --tw-gradient-to: #431407 !important;
+}
+
+/* Dark theme borders for Rankings */
+.dark-theme .border-amber-300 {
+  border-color: #b45309 !important;
+}
+
+/* Dark theme gradients for ranking icons */
+.dark-theme .from-yellow-400 {
+  --tw-gradient-from: #ca8a04 !important;
+}
+
+.dark-theme .to-yellow-500 {
+  --tw-gradient-to: #a16207 !important;
+}
+
+.dark-theme .from-gray-300 {
+  --tw-gradient-from: #4b5563 !important;
+}
+
+.dark-theme .to-gray-400 {
+  --tw-gradient-to: #374151 !important;
+}
+
+.dark-theme .from-gray-200 {
+  --tw-gradient-from: #4b5563 !important;
+}
+
+.dark-theme .to-gray-300 {
+  --tw-gradient-to: #374151 !important;
+}
+
+.dark-theme .shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2) !important;
+}
+
+.dark-theme .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Dark theme for specific components */
+.dark-theme .bg-green-100 {
+  background-color: #1a3a1a !important;
+}
+
+.dark-theme .bg-blue-100 {
+  background-color: #1a2a3a !important;
+}
+
+.dark-theme .border-green-300 {
+  border-color: #2d5a2d !important;
+}
+
+.dark-theme .border-blue-300 {
+  border-color: #2d4a5a !important;
+}
+
+.dark-theme .text-green-600 {
+  color: #4ade80 !important;
+}
+
+.dark-theme .text-blue-600 {
+  color: #60a5fa !important;
+}
+
+.dark-theme .from-green-500 {
+  --tw-gradient-from: #22c55e !important;
+}
+
+.dark-theme .to-blue-600 {
+  --tw-gradient-to: #2563eb !important;
+}
+
+.dark-theme .bg-green-500 {
+  background-color: #22c55e !important;
+}
+
+.dark-theme .bg-blue-500 {
+  background-color: #3b82f6 !important;
+}
+
+/* Dark theme for Dashboard and other components */
+.dark-theme .border-green-100 {
+  border-color: #2d4a2d !important;
+}
+
+.dark-theme .text-gray-900 {
+  color: #f0f0f0 !important;
+}
+
+.dark-theme .text-red-600 {
+  color: #f87171 !important;
+}
+
+.dark-theme .border-b-2 {
+  border-color: #4ade80 !important;
+}
+
+.dark-theme .from-green-400 {
+  --tw-gradient-from: #4ade80 !important;
+}
+
+.dark-theme .to-blue-500 {
+  --tw-gradient-to: #3b82f6 !important;
+}
+
+.dark-theme .from-purple-500 {
+  --tw-gradient-from: #a855f7 !important;
+}
+
+.dark-theme .to-pink-500 {
+  --tw-gradient-to: #ec4899 !important;
+}
+
+.dark-theme .from-yellow-400 {
+  --tw-gradient-from: #facc15 !important;
+}
+
+.dark-theme .to-orange-500 {
+  --tw-gradient-to: #f97316 !important;
+}
+
+.dark-theme .from-blue-400 {
+  --tw-gradient-from: #60a5fa !important;
+}
+
+.dark-theme .to-purple-500 {
+  --tw-gradient-to: #a855f7 !important;
+}
+
+/* Dark theme styles for select elements */
+body.dark-theme select {
+  background-color: #374151 !important;
+  color: #f9fafb !important;
+  border-color: #4b5563 !important;
+}
+
+body.dark-theme select:focus {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2) !important;
+}
+
+body.dark-theme select option {
+  background-color: #374151 !important;
+  color: #f9fafb !important;
+}

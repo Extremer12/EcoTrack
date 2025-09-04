@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useEcoTrack } from '../contexts/EcoTrackContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import { Icons } from './Icons';
 
 const Login = () => {
   const { login } = useEcoTrack();
+  const { t } = useLanguage();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -22,16 +24,16 @@ const Login = () => {
               <Icons.Recycle />
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">EcoTrack</h1>
-          <p className="text-gray-600">Sistema de Reciclaje Escolar</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">{t('loginTitle')}</h1>
+          <p className="text-gray-600">{t('loginSubtitle')}</p>
         </div>
 
         <div className="bg-white rounded-2xl shadow-xl p-8 border border-green-100">
-          <h2 className="text-xl font-semibold text-gray-900 mb-6 text-center">Iniciar Sesión</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-6 text-center">{t('loginButton')}</h2>
           
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Usuario</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">{t('username')}</label>
               <input
                 type="text"
                 value={username}
@@ -42,7 +44,7 @@ const Login = () => {
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Contraseña</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">{t('password')}</label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -65,7 +67,7 @@ const Login = () => {
               type="submit"
               className="w-full bg-emerald-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-emerald-600 transition-colors"
             >
-              Iniciar Sesión
+              {t('loginButton')}
             </button>
           </form>
 

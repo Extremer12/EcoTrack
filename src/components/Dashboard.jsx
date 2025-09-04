@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Icons } from './Icons';
 import { useEcoTrack } from '../contexts/EcoTrackContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 // Stat Card Component
 const StatCard = ({ title, value, icon, gradient }) => {
@@ -22,6 +23,7 @@ const StatCard = ({ title, value, icon, gradient }) => {
 // Dashboard Component
 const Dashboard = () => {
   const { data, isLoading } = useEcoTrack();
+  const { t } = useLanguage();
   
   console.log('Dashboard: isLoading =', isLoading);
   console.log('Dashboard: data =', data);
@@ -31,7 +33,7 @@ const Dashboard = () => {
     return (
       <div className="p-6 text-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto mb-4"></div>
-        <p className="text-gray-600">Cargando datos...</p>
+        <p className="text-gray-600">{t('loading')}</p>
       </div>
     );
   }
@@ -41,7 +43,7 @@ const Dashboard = () => {
     return (
       <div className="p-6 text-center">
         <div className="text-red-600 mb-4">⚠️</div>
-        <p className="text-gray-600">Error: No se pudieron cargar los datos</p>
+        <p className="text-gray-600">{t('errorLoadingData')}</p>
       </div>
     );
   }
@@ -58,9 +60,9 @@ const Dashboard = () => {
       <div className="bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 rounded-3xl p-8 text-white shadow-xl">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold mb-2">¡Bienvenido a EcoTrack! 🌱</h1>
+            <h1 className="text-3xl font-bold mb-2">{t('welcomeTitle')}</h1>
             <p className="text-emerald-100 text-lg">
-              Juntos estamos construyendo un futuro más verde, un reciclaje a la vez.
+              {t('welcomeSubtitle')}
             </p>
           </div>
           <div className="hidden md:block">
@@ -72,25 +74,25 @@ const Dashboard = () => {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
-          title="Puntos Totales"
+          title={t('totalPoints')}
           value={totalConfirmed.toLocaleString()}
           icon={<Icons.Chart />}
           gradient="from-blue-500 to-blue-600"
         />
         <StatCard
-          title="Pendientes"
+          title={t('pending')}
           value={totalPending.toLocaleString()}
           icon={<Icons.Clock />}
           gradient="from-yellow-500 to-orange-500"
         />
         <StatCard
-          title="Estudiantes"
+          title={t('students')}
           value={totalStudents}
           icon={<Icons.Users />}
           gradient="from-green-500 to-emerald-500"
         />
         <StatCard
-          title="Reciclajes"
+          title={t('recyclings')}
           value={totalRecycling}
           icon={<Icons.Recycle />}
           gradient="from-emerald-500 to-teal-500"

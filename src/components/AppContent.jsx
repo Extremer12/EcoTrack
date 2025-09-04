@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEcoTrack } from '../contexts/EcoTrackContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import { Icons } from './Icons';
 import Login from './Login';
 import Dashboard from './Dashboard';
@@ -8,6 +9,7 @@ import ApprovalPanel from './ApprovalPanel';
 import Rankings from './Rankings';
 import History from './History';
 import StudentProfile from './StudentProfile';
+import Settings from './Settings';
 
 const AppContent = () => {
   const { 
@@ -19,6 +21,7 @@ const AppContent = () => {
     registerRecycling, 
     approveCourse 
   } = useEcoTrack();
+  const { t } = useLanguage();
 
   if (!user) {
     return <Login />;
@@ -35,8 +38,8 @@ const AppContent = () => {
                 <Icons.Recycle />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">EcoTrack</h1>
-                <p className="text-sm text-gray-500">Sistema de Reciclaje Escolar</p>
+                <h1 className="text-xl font-bold text-gray-900">{t('loginTitle')}</h1>
+                <p className="text-sm text-gray-500">{t('loginSubtitle')}</p>
               </div>
             </div>
             
@@ -63,12 +66,13 @@ const AppContent = () => {
             <Icons.Home className="w-4 h-4" />
             <span>/</span>
             <span className="text-emerald-600 font-medium capitalize">
-              {activeTab === 'dashboard' && 'Panel Principal'}
-              {activeTab === 'recycle' && 'Registrar Reciclaje'}
-              {activeTab === 'approve' && 'Aprobar Puntos'}
-              {activeTab === 'rankings' && 'Rankings'}
-              {activeTab === 'history' && 'Historial'}
-              {activeTab === 'profile' && 'Mi Perfil'}
+              {activeTab === 'dashboard' && t('dashboard')}
+              {activeTab === 'recycle' && t('recycle')}
+              {activeTab === 'approve' && t('approval')}
+              {activeTab === 'rankings' && t('rankings')}
+              {activeTab === 'history' && t('history')}
+              {activeTab === 'profile' && t('profile')}
+              {activeTab === 'settings' && t('settings')}
             </span>
           </div>
         </div>
@@ -78,7 +82,7 @@ const AppContent = () => {
           <div className="flex flex-wrap gap-2 bg-white rounded-xl p-2 shadow-sm border border-green-100">
             <button
               onClick={() => setActiveTab('dashboard')}
-              title="Ver resumen general y estadísticas"
+              title={t('dashboard')}
               className={`flex items-center space-x-2 px-4 py-3 rounded-lg font-medium transition-all transform hover:scale-105 ${
                 activeTab === 'dashboard'
                   ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg'
@@ -86,14 +90,14 @@ const AppContent = () => {
               }`}
             >
               <Icons.Home />
-              <span>Dashboard</span>
+              <span>{t('dashboard')}</span>
               {activeTab === 'dashboard' && <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>}
             </button>
             
             {user.role === 'course_validator' && (
               <button
                 onClick={() => setActiveTab('recycle')}
-                title="Registrar nuevo reciclaje de estudiantes"
+                title={t('recycle')}
                 className={`flex items-center space-x-2 px-4 py-3 rounded-lg font-medium transition-all transform hover:scale-105 ${
                   activeTab === 'recycle'
                     ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg'
@@ -101,7 +105,7 @@ const AppContent = () => {
                 }`}
               >
                 <Icons.Plus />
-                <span>Registrar</span>
+                <span>{t('recycle')}</span>
                 {activeTab === 'recycle' && <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>}
               </button>
             )}
@@ -109,7 +113,7 @@ const AppContent = () => {
             {user.role === 'principal' && (
               <button
                 onClick={() => setActiveTab('approve')}
-                title="Aprobar puntos pendientes de los cursos"
+                title={t('approval')}
                 className={`relative flex items-center space-x-2 px-4 py-3 rounded-lg font-medium transition-all transform hover:scale-105 ${
                   activeTab === 'approve'
                     ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg'
@@ -117,7 +121,7 @@ const AppContent = () => {
                 }`}
               >
                 <Icons.Check />
-                <span>Aprobar</span>
+                <span>{t('approval')}</span>
                 {/* Notification badge for pending approvals */}
                 {data.courses.some(course => course.pointsPending > 0) && (
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-bounce"></div>
@@ -128,7 +132,7 @@ const AppContent = () => {
             
             <button
               onClick={() => setActiveTab('rankings')}
-              title="Ver clasificaciones de estudiantes y cursos"
+              title={t('rankings')}
               className={`flex items-center space-x-2 px-4 py-3 rounded-lg font-medium transition-all transform hover:scale-105 ${
                 activeTab === 'rankings'
                   ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg'
@@ -136,13 +140,13 @@ const AppContent = () => {
               }`}
             >
               <Icons.Trophy />
-              <span>Rankings</span>
+              <span>{t('rankings')}</span>
               {activeTab === 'rankings' && <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>}
             </button>
             
             <button
               onClick={() => setActiveTab('history')}
-              title="Ver historial completo de reciclajes"
+              title={t('history')}
               className={`flex items-center space-x-2 px-4 py-3 rounded-lg font-medium transition-all transform hover:scale-105 ${
                 activeTab === 'history'
                   ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg'
@@ -150,14 +154,14 @@ const AppContent = () => {
               }`}
             >
               <Icons.Chart />
-              <span>Historial</span>
+              <span>{t('history')}</span>
               {activeTab === 'history' && <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>}
             </button>
             
             {user.role === 'student' && (
               <button
                 onClick={() => setActiveTab('profile')}
-                title="Ver mi perfil y estadísticas personales"
+                title={t('profile')}
                 className={`flex items-center space-x-2 px-4 py-3 rounded-lg font-medium transition-all transform hover:scale-105 ${
                   activeTab === 'profile'
                     ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg'
@@ -165,10 +169,24 @@ const AppContent = () => {
                 }`}
               >
                 <Icons.User />
-                <span>Mi Perfil</span>
+                <span>{t('profile')}</span>
                 {activeTab === 'profile' && <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>}
               </button>
             )}
+            
+            <button
+              onClick={() => setActiveTab('settings')}
+              title={t('settings')}
+              className={`flex items-center space-x-2 px-4 py-3 rounded-lg font-medium transition-all transform hover:scale-105 ${
+                activeTab === 'settings'
+                  ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-green-50'
+              }`}
+            >
+              <Icons.Settings />
+              <span>{t('settings')}</span>
+              {activeTab === 'settings' && <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>}
+            </button>
           </div>
         </nav>
 
@@ -180,20 +198,20 @@ const AppContent = () => {
             </div>
             <div>
               <h4 className="font-medium text-blue-900 mb-1">
-                {activeTab === 'dashboard' && '📊 Panel Principal'}
-                {activeTab === 'recycle' && '♻️ Registro de Reciclaje'}
-                {activeTab === 'approve' && '✅ Aprobación de Puntos'}
-                {activeTab === 'rankings' && '🏆 Rankings y Competencias'}
-                {activeTab === 'history' && '📋 Historial de Actividades'}
-                {activeTab === 'profile' && '👤 Mi Perfil Personal'}
+                {activeTab === 'dashboard' && t('helpDashboard')}
+                {activeTab === 'recycle' && t('helpRecycle')}
+                {activeTab === 'approve' && t('helpApprove')}
+                {activeTab === 'rankings' && t('helpRankings')}
+                {activeTab === 'history' && t('helpHistory')}
+                {activeTab === 'profile' && t('helpProfile')}
               </h4>
               <p className="text-sm text-blue-800">
-                {activeTab === 'dashboard' && 'Aquí puedes ver un resumen de todas las actividades de reciclaje, puntos totales y estadísticas generales.'}
-                {activeTab === 'recycle' && 'Registra nuevos reciclajes seleccionando el estudiante, material y tamaño del pack. Los puntos quedarán pendientes de aprobación.'}
-                {activeTab === 'approve' && 'Como validador principal, puedes aprobar los puntos pendientes de cada curso para que se conviertan en puntos confirmados.'}
-                {activeTab === 'rankings' && 'Consulta las clasificaciones de estudiantes y cursos basadas en los puntos de reciclaje confirmados.'}
-                {activeTab === 'history' && 'Revisa el historial completo de todas las actividades de reciclaje con filtros por estado, estudiante y fecha.'}
-                {activeTab === 'profile' && 'Consulta tu información personal, puntos totales, historial de reciclaje, logros obtenidos y progreso hacia el siguiente nivel.'}
+                {activeTab === 'dashboard' && t('helpDashboardDesc')}
+                {activeTab === 'recycle' && t('helpRecycleDesc')}
+                {activeTab === 'approve' && t('helpApproveDesc')}
+                {activeTab === 'rankings' && t('helpRankingsDesc')}
+                {activeTab === 'history' && t('helpHistoryDesc')}
+                {activeTab === 'profile' && t('helpProfileDesc')}
               </p>
             </div>
           </div>
@@ -206,6 +224,7 @@ const AppContent = () => {
         {activeTab === 'rankings' && <Rankings />}
         {activeTab === 'history' && <History />}
         {activeTab === 'profile' && <StudentProfile />}
+        {activeTab === 'settings' && <Settings />}
       </div>
     </div>
   );
