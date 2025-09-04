@@ -2,12 +2,15 @@
   "name": "ecotrack-app",
   "version": "1.0.0",
   "description": "Sistema de Reciclaje Escolar - EcoScore App",
+  "homepage": "https://extremer12.github.io/EcoTrack",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -33,5 +36,8 @@
     "sostenibilidad"
   ],
   "author": "EcoTrack Team",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
 }

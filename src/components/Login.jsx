@@ -3,7 +3,7 @@ import { useEcoTrack } from '../contexts/EcoTrackContext';
 import { Icons } from './Icons';
 
 const Login = () => {
-  const { login } = useEcoTrack();{
+  const { login } = useEcoTrack();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
