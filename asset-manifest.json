@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/EcoTrack/static/css/main.f1fa4988.css",
-    "main.js": "/EcoTrack/static/js/main.4b49cb5f.js",
+    "main.css": "/EcoTrack/static/css/main.975cda83.css",
+    "main.js": "/EcoTrack/static/js/main.6a04aad1.js",
     "index.html": "/EcoTrack/index.html",
-    "main.f1fa4988.css.map": "/EcoTrack/static/css/main.f1fa4988.css.map",
-    "main.4b49cb5f.js.map": "/EcoTrack/static/js/main.4b49cb5f.js.map"
+    "main.975cda83.css.map": "/EcoTrack/static/css/main.975cda83.css.map",
+    "main.6a04aad1.js.map": "/EcoTrack/static/js/main.6a04aad1.js.map"
   },
   "entrypoints": [
-    "static/css/main.f1fa4988.css",
-    "static/js/main.4b49cb5f.js"
+    "static/css/main.975cda83.css",
+    "static/js/main.6a04aad1.js"
   ]
 }
